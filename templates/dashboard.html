@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoatMusic - Панель управления</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-music"></i>
+                    <span>GoatMusic</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#home" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Главная</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#search" class="nav-link">
+                            <i class="fas fa-search"></i>
+                            <span>Поиск</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#library" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            <span>Моя музыка</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#playlists" class="nav-link">
+                            <i class="fas fa-list"></i>
+                            <span>Плейлисты</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#favorites" class="nav-link">
+                            <i class="fas fa-heart"></i>
+                            <span>Любимые</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="/logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Выйти</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Верхняя панель -->
+            <header class="top-bar">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Поиск музыки, исполнителей, альбомов...">
+                    </div>
+                </div>
+                
+                <div class="user-profile">
+                    <div class="profile-info">
+                        <span id="user-name">Загрузка...</span>
+                        <small id="user-email">Загрузка...</small>
+                    </div>
+                    <div class="profile-avatar" id="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Контент -->
+            <div class="content-area">
+                <!-- Домашняя страница -->
+                <section id="home" class="content-section active">
+                    <div class="section-header">
+                        <h1>Добро пожаловать в GoatMusic</h1>
+                        <p>Ваша персональная музыкальная библиотека</p>
+                    </div>
+
+                    <!-- Текущий трек -->
+                    <div class="current-track-section">
+                        <h2>Сейчас играет</h2>
+                        <div class="current-track" id="current-track">
+                            <div class="track-info">
+                                <div class="track-cover">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                                <div class="track-details">
+                                    <h3>Нет активного трека</h3>
+                                    <p>Начните воспроизведение в Spotify</p>
+                                </div>
+                            </div>
+                            <div class="track-controls">
+                                <button class="control-btn" id="play-btn" disabled>
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <button class="control-btn" id="pause-btn" disabled>
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button class="control-btn" id="next-btn" disabled>
+                                    <i class="fas fa-forward"></i>
+                                </button>
+                                <button class="control-btn" id="prev-btn" disabled>
+                                    <i class="fas fa-backward"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Недавно прослушанные -->
+                    <div class="recent-section">
+                        <h2>Недавно прослушанные</h2>
+                        <div class="tracks-grid" id="recent-tracks">
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Загрузка...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Рекомендации -->
+                    <div class="recommendations-section">
+                        <h2>Рекомендации для вас</h2>
+                        <div class="tracks-grid" id="recommendations">
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Загрузка...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Поиск -->
+                <section id="search" class="content-section">
+                    <div class="section-header">
+                        <h1>Поиск</h1>
+                        <p>Найдите любую музыку</p>
+                    </div>
+                    
+                    <div class="search-results" id="search-results">
+                        <div class="search-placeholder">
+                            <i class="fas fa-search"></i>
+                            <p>Введите запрос для поиска</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Моя музыка -->
+                <section id="library" class="content-section">
+                    <div class="section-header">
+                        <h1>Моя музыка</h1>
+                        <p>Ваша музыкальная библиотека</p>
+                    </div>
+                    
+                    <div class="library-content">
+                        <div class="library-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-heart"></i>
+                                <div class="stat-info">
+                                    <h3>Любимые треки</h3>
+                                    <span id="liked-tracks-count">0</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-list"></i>
+                                <div class="stat-info">
+                                    <h3>Плейлисты</h3>
+                                    <span id="playlists-count">0</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-clock"></i>
+                                <div class="stat-info">
+                                    <h3>Время прослушивания</h3>
+                                    <span id="listening-time">0 мин</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Плейлисты -->
+                <section id="playlists" class="content-section">
+                    <div class="section-header">
+                        <h1>Плейлисты</h1>
+                        <p>Ваши музыкальные коллекции</p>
+                    </div>
+                    
+                    <div class="playlists-grid" id="playlists-grid">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Загрузка плейлистов...</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Любимые -->
+                <section id="favorites" class="content-section">
+                    <div class="section-header">
+                        <h1>Любимые треки</h1>
+                        <p>Музыка, которая вам нравится</p>
+                    </div>
+                    
+                    <div class="favorites-grid" id="favorites-grid">
+                        <div class="loading-placeholder">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Загрузка любимых треков...</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальное окно для трека -->
+    <div class="modal" id="track-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="track-modal-content" id="track-modal-content">
+                <!-- Содержимое модального окна -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

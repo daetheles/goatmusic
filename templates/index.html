@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoatMusic - Ваша музыкальная библиотека</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="logo">
+                    <i class="fas fa-music"></i>
+                    <span>GoatMusic</span>
+                </div>
+                <h1>Откройте мир музыки</h1>
+                <p>Слушайте любимые треки, создавайте плейлисты и делитесь музыкой с друзьями</p>
+                <div class="cta-buttons">
+                    <a href="/login" class="btn btn-primary">
+                        <i class="fab fa-spotify"></i>
+                        Войти через Spotify
+                    </a>
+                    <a href="#features" class="btn btn-secondary">Узнать больше</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="music-waves">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="features" class="features-section">
+            <h2>Возможности GoatMusic</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Умный поиск</h3>
+                    <p>Находите любую музыку по названию, исполнителю или альбому</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3>Плейлисты</h3>
+                    <p>Создавайте и управляйте своими плейлистами</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Любимые треки</h3>
+                    <p>Сохраняйте понравившиеся песни в избранное</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Мобильная версия</h3>
+                    <p>Слушайте музыку на любом устройстве</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Готовы начать?</h2>
+            <p>Присоединяйтесь к миллионам пользователей по всему миру</p>
+            <a href="/login" class="btn btn-primary btn-large">
+                <i class="fab fa-spotify"></i>
+                Начать бесплатно
+            </a>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-music"></i>
+                    <span>GoatMusic</span>
+                </div>
+                <p>&copy; 2025 GoatMusic. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Поддержка</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/landing.js') }}"></script>
+</body>
+</html>

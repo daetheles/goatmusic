@@ -1,0 +1,29 @@
+[Unit]
+Description=GoatMusic Spotify Clone
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/goatmusic
+Environment=PATH=/var/www/goatmusic/venv/bin
+ExecStart=/var/www/goatmusic/venv/bin/gunicorn --config gunicorn.conf.py wsgi:app
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=always
+RestartSec=5
+
+# Логирование
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=goatmusic
+
+# Безопасность
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/goatmusic/logs
+
+[Install]
+WantedBy=multi-user.target
