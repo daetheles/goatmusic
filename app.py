@@ -16,7 +16,7 @@ CORS(app)
 
 # Spotify API конфигурация
 SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
-SPOTIFY_REDIRECT_URI = 'https://goatmusic.online/callback'
+SPOTIFY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
 SPOTIFY_AUTH_URL = 'https://accounts.spotify.com/authorize'
 SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token'
 SPOTIFY_API_BASE = 'https://api.spotify.com/v1'
